@@ -29,7 +29,7 @@
 			options = options || {};
 			options.email = emailAddress;
 			var url = this.buildURL(this.personLookupEndpoint,apiKey,options);
-			this.executeRequest(url,'GET','json',oncomplete);
+			this.executeRequest(url,'GET','jsonp',oncomplete);
 		},
 		enrichVCard: function(apiKey,vcard,oncomplete,options) {
 			var url = this.buildURL(this.vcardEndpoint,apiKey,options);
