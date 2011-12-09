@@ -1,0 +1,41 @@
+**** FullContact jQuery Plugin ****
+Documentation:
+
+	Person Lookup
+		$.fullcontact.emailLookup(apiKey,emailAddress,callback,options)
+		
+		PARAMETERS:
+			apiKey - Your FullContact API Key.
+			emailAddress - The emailAddress you would like to lookup.
+			callback - The function to call once the request completes.
+			options - Key value pair of query string parameters. (i.e. {queue:1})
+		RETURNS:
+			If the request is successful you will get a javascript object of the person.
+			If the request fails you will get a javascript object containing the error information.
+		
+		Example Usage:	
+			$.fullcontact.emailLookup('<YOUR API KEY>','lorangb@gmail.com',function(obj){console.log(obj);});
+
+	VCard Enrichment
+                $.fullcontact.enrichVCard(apiKey,vCard,callback,options)
+	
+		PARAMETERS:
+			apiKey - Your FullContact API Key.
+			vCard - Your VCard String.
+			callback - The function to call once the request completes.
+			options = Key value pair of query string parameters.
+		RETURNS:
+			If the request is successful you will get the enriched VCard in a string.
+			If the request fails you will get a javascript object containing the error information.
+	
+		Example Usage:
+			var vcard = "BEGIN:VCARD\nVERSION:3.0\nEMAIL;TYPE=INTERNET:lorangb@gmail.com\nEND:VCARD";
+                        $.fullcontact.enrichVCard('<YOUR API KEY>',vcard,function(text){console.log(text);});
+
+
+	Example Error:
+
+		{
+			status: 500,
+			message: "An error occurred"
+		}
