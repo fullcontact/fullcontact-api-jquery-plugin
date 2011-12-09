@@ -80,7 +80,7 @@
                 <li>If the request fails you will get a javascript object containing the error information.</li>
             </ul>
             <p class="subtitle">Example Usage:</p>
-            <ul><li>$.fullcontact.emailLookup('<YOUR API KEY>','lorangb@gmail.com',function(obj){console.log(obj);});</li></ul>
+            <ul><li>$.fullcontact.emailLookup('YOUR API KEY','lorangb@gmail.com',function(obj){console.log(obj);});</li></ul>
         </div>
 		<ul class="float-left">
 			<li><label>API Key:</label><input type="text" id="person-apiKey" /></li>
@@ -95,7 +95,7 @@
         </ul>
         <div class="clear"></div>
         <h1>Enrich VCard</h1>
-        <h2>$.fullcontact.emailLookup(apiKey,emailAddress,callback,options)</h2>
+        <h2>$.fullcontact.enrichVCard(apiKey,vCard,callback,options)</h2>
         <div class="description">
             <p class="subtitle">PARAMETERS:</p>
             <ul>
@@ -110,7 +110,10 @@
                 <li>If the request fails you will get a javascript object containing the error information.</li>
             </ul>
             <p class="subtitle">Example Usage:</p>
-            <ul><li>$.fullcontact.emailLookup('<YOUR API KEY>','lorangb@gmail.com',function(obj){console.log(obj);});</li></ul>
+            <ul>
+                <li>var vcard = "BEGIN:VCARD\nVERSION:3.0\nEMAIL;TYPE=INTERNET:lorangb@gmail.com\nEND:VCARD";</li>
+                <li>$.fullcontact.enrichVCard('YOUR API KEY',vcard,function(text){console.log(text);});</li>
+            </ul>
         </div>
 		<ul class="float-left">
 			<li><label>API Key:</label><input type="text" id="vcard-apiKey" /></li>
