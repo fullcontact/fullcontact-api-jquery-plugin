@@ -3,6 +3,18 @@
 		<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
 		<script type="text/javascript" src="jquery.fullcontact.1.0.js"></script>
 		<script type="text/javascript">
+            function objectToString(obj)
+            {
+                if(typeof(obj) == "object") {
+                    var str = "";
+                    for(var k in obj) {
+                        if(typeof(obj[k]) == "object") str += objectToString(obj[k]);
+                        else str += k+"="+obj[k]+"\n";
+                    }
+                    return str
+                }
+                else return obj
+            }
 			$(function(){
                 $('#btnEnrichVCard').click(function(){
                     $.fullcontact.enrichVCard($('#vcard-apiKey').val(),$('#vcard').val(),function(text){
@@ -11,12 +23,16 @@
                 });
 				$('#btnPersonLookup').click(function(){
 					$.fullcontact.emailLookup($('#person-apiKey').val(),$('#email').val(),function(obj){
-                        $('#person-result').show().find('div').html(JSON.stringify(obj));
+                        $('#person-result').show().find('textarea').val(objectToString(obj));
                     });
 				});
 			});
 		</script>
         <style type="text/css">
+            body {
+                font-family: "Helvetica";
+            }
+
             ul, li {
                 list-style-type: none;
             }
@@ -41,6 +57,10 @@
             .float-left {
                 float: left;
             }
+
+            .clear {
+                clear: both;
+            }
         </style>
 	</head>
 	<body>
@@ -62,15 +82,18 @@
             <p class="subtitle">Example Usage:</p>
             <ul><li>$.fullcontact.emailLookup('<YOUR API KEY>','lorangb@gmail.com',function(obj){console.log(obj);});</li></ul>
         </div>
-		<ul>
+		<ul class="float-left">
 			<li><label>API Key:</label><input type="text" id="person-apiKey" /></li>
             <li><label>Email Address:</label><input type="text" id="email" value="lorangb@gmail.com" /></li>
             <li><input type="button" id="btnPersonLookup" value="Submit" /></li>
+        </ul>
+        <ul class="float-left">
             <li id="person-result">
                 <h3>Result</h3>
-                <div></div>
+                <textarea id="person-result-textarea"></textarea>
             </li>
         </ul>
+        <div class="clear"></div>
         <h1>Enrich VCard</h1>
         <h2>$.fullcontact.emailLookup(apiKey,emailAddress,callback,options)</h2>
         <div class="description">
