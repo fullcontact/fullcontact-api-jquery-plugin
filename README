@@ -1,4 +1,5 @@
 **** FullContact jQuery Plugin ****
+!!!   Note: When using client side languages such as jQuery to call the FullContact API note that the API Key is exposed and can easily be compromised.  Preferably your solution will require the end user to obtain their own API Key so that your developer key is not compromised.   !!!
 Documentation:
 
 	Person Lookup
