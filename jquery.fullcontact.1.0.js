@@ -19,7 +19,7 @@
 	$.fullcontact = {
 		baseURL: 'https://api.fullcontact.com/',
 		vcardEndpoint: 'v2/person.vcf',
-		personLookupEndpoint: 'v1/person.json',
+		personLookupEndpoint: 'v2/person.json',
 		buildURL: function(endpoint, apiKey, options) {
 			var optionsString = ""
 			for(var opt in options) optionsString += "&"+escape(opt)+"="+escape(options[opt]);
