@@ -13,13 +13,13 @@
    See the License for the specific language governing permissions and
    limitations under the License.
  */
-//jQuery FullContact Plugin - VERSION 1.0
+//jQuery FullContact Plugin - VERSION 2.0
 
 (function($) {
 	$.fullcontact = {
 		baseURL: 'https://api.fullcontact.com/',
 		vcardEndpoint: 'v2/person.vcf',
-		personLookupEndpoint: 'v1/person.json',
+		personLookupEndpoint: 'v2/person.json',
 		buildURL: function(endpoint, apiKey, options) {
 			var optionsString = ""
 			for(var opt in options) optionsString += "&"+escape(opt)+"="+escape(options[opt]);
@@ -44,6 +44,24 @@
 			options = options || {};
 			options.email = emailAddress;
 			var url = this.buildURL(this.personLookupEndpoint,apiKey,options);
+			this.executeRequest(url,'GET','jsonp',oncomplete);
+		},
+		twitterLookup: function(apiKey, twitterHandle, oncomplete, options){
+			options = options || {};
+			options.twitter = twitterHandle;
+			var url = this.buildURL(this.personLookupEndpoint, apiKey, options);
+			this.executeRequest(url,'GET','jsonp',oncomplete);
+		},
+		facebookLookup: function(apiKey, facebookUsername, oncomplete, options){
+			options = options || {};
+			options.facebookUsername = facebookUsername;
+			var url = this.buildURL(this.personLookupEndpoint, apiKey, options);
+			this.executeRequest(url,'GET','jsonp',oncomplete);
+		},
+		phoneLookup: function(apiKey, phone, oncomplete, options){
+			options = options || {};
+			options.phone = phone;
+			var url = this.buildURL(this.personLookupEndpoint, apiKey, options);
 			this.executeRequest(url,'GET','jsonp',oncomplete);
 		},
 		enrichVCard: function(apiKey,vcard,oncomplete,options) {
