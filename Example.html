@@ -1,20 +1,8 @@
 <html>
 	<head>
-		<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
-		<script type="text/javascript" src="jquery.fullcontact.1.0.js"></script>
+		<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/2.1.0/jquery.min.js"></script>
+		<script type="text/javascript" src="jquery.fullcontact.2.1.js"></script>
 		<script type="text/javascript">
-            function objectToString(obj)
-            {
-                if(typeof(obj) == "object") {
-                    var str = "";
-                    for(var k in obj) {
-                        if(typeof(obj[k]) == "object") str += objectToString(obj[k]);
-                        else str += k+"="+obj[k]+"\n";
-                    }
-                    return str
-                }
-                else return obj
-            }
 			$(function(){
                 $('#btnEnrichVCard').click(function(){
                     $.fullcontact.enrichVCard($('#vcard-apiKey').val(),$('#vcard').val(),function(text){
@@ -23,7 +11,7 @@
                 });
 				$('#btnPersonLookup').click(function(){
 					$.fullcontact.emailLookup($('#person-apiKey').val(),$('#email').val(),function(obj){
-                        $('#person-result').show().find('textarea').val(objectToString(obj));
+                        $('#person-result').show().find('textarea').val(JSON.stringify(obj, null, 4));
                     });
 				});
 			});
@@ -91,43 +79,6 @@
             <li id="person-result">
                 <h3>Result</h3>
                 <textarea id="person-result-textarea"></textarea>
-            </li>
-        </ul>
-        <div class="clear"></div>
-        <h1>Enrich VCard</h1>
-        <h2>$.fullcontact.enrichVCard(apiKey,vCard,callback,options)</h2>
-        <div class="description">
-            <p class="subtitle">PARAMETERS:</p>
-            <ul>
-                <li>apiKey - Your FullContact API Key.</li>
-                <li>vCard - The vCard you would like to enrich.</li>
-                <li>callback - The function to call once the request completes.</li>
-                <li>options - Key value pair of query string parameters.</li>
-            </ul>
-            <p class="subtitle">RETURNS:</p>
-            <ul>
-                <li>If the request is successful you will get the enriched VCard string.</li>
-                <li>If the request fails you will get a javascript object containing the error information.</li>
-            </ul>
-            <p class="subtitle">Example Usage:</p>
-            <ul>
-                <li>var vcard = "BEGIN:VCARD\nVERSION:3.0\nEMAIL;TYPE=INTERNET:lorangb@gmail.com\nEND:VCARD";</li>
-                <li>$.fullcontact.enrichVCard('YOUR API KEY',vcard,function(text){console.log(text);});</li>
-            </ul>
-        </div>
-		<ul class="float-left">
-			<li><label>API Key:</label><input type="text" id="vcard-apiKey" /></li>
-            <li><label>VCard:</label></li>
-			<li><textarea id="vcard">BEGIN:VCARD
-VERSION:3.0
-EMAIL;TYPE=INTERNET:lorangb@gmail.com
-END:VCARD</textarea></li>
-			<li><input type="button" id="btnEnrichVCard" value="Submit" /></li>
-        </ul>
-        <ul class="float-left">
-            <li id="vcard-result">
-                <h3>Result</h3>
-                <textarea id="vcard-result-textarea"></textarea>
             </li>
         </ul>
         <div class="clear"></div>
