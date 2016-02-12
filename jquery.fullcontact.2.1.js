@@ -56,12 +56,6 @@
             var url = this.buildURL(this.personLookupEndpoint, apiKey, options);
             this.executeRequest(url, 'GET', null, onComplete);
         },
-        facebookLookup: function (apiKey, facebookUsername, onComplete, options) {
-            options = options || {};
-            options.facebookUsername = facebookUsername;
-            var url = this.buildURL(this.personLookupEndpoint, apiKey, options);
-            this.executeRequest(url, 'GET', null, onComplete);
-        },
         phoneLookup: function (apiKey, phone, onComplete, options) {
             options = options || {};
             options.phone = phone;
