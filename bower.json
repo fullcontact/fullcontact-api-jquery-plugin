@@ -1,0 +1,22 @@
+{
+  "name": "fullcontact-api-jquery-plugin",
+  "version": "2.2",
+  "homepage": "https://github.com/fullcontact/fullcontact-api-jquery-plugin",
+  "authors": [
+    "Samuel Dallaire Thibault <sdthibault@kronostechnologies.com>"
+  ],
+  "description": "A jQuery API for using Full Contact",
+  "main": "jquery.fullcontact.js",
+  "moduleType": [
+    "globals"
+  ],
+  "keywords": [
+    "full-contact",
+    "api",
+    "jquery"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*"
+  ]
+}
